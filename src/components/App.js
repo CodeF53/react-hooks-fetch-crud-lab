@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import AdminNavBar from "./AdminNavBar";
 import QuestionForm from "./QuestionForm";
 import QuestionList from "./QuestionList";
 
 function App() {
   const [page, setPage] = useState("List");
-<<<<<<< HEAD
   const [questions,setQuestions]=useState([])
 
   const URL="http://localhost:4000/questions"
@@ -31,13 +30,11 @@ function App() {
     .then(res=>res.json())
     .then(newQuestion=>setQuestions([...questions,newQuestion]))
   }
-=======
->>>>>>> parent of b343ffa (code)
 
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm /> : <QuestionList />}
+      {page === "Form" ? <QuestionForm addQuestion={addQuestion} /> : <QuestionList questions={questions} />}
     </main>
   );
 }
